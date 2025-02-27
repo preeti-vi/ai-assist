@@ -1,6 +1,4 @@
 from dotenv import load_dotenv
-from chromadb import PersistentClient
-from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import GoogleGenerativeAI
@@ -9,6 +7,9 @@ from langchain_core.output_parsers import StrOutputParser
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+from chromadb import PersistentClient
+from langchain_chroma import Chroma
 
 def get_query_category(user_query: str):
     load_dotenv()
