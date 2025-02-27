@@ -6,6 +6,10 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import GoogleGenerativeAI
 from langchain_core.output_parsers import StrOutputParser
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 def get_query_category(user_query: str):
     load_dotenv()
 

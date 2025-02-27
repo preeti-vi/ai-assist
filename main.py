@@ -1,4 +1,3 @@
-import _1_create_db as create_db
 import _2_retrival as retrival
 import _3_augment as augment
 import _4_generate_response as generate

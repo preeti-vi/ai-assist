@@ -1,5 +1,10 @@
 import streamlit as st
 import main
+from streamlit import logger
+import sqlite3
+
+app_logger = logger.get_logger("SMI_APP")
+app_logger.info(f"SQLite version : {sqlite3.sqlite_version}")
 
 st.title("About me -AI-Powered Personal Assistant")
 st.text("This assistant helps to provide information about my profession experience, technical skills etc. ")
