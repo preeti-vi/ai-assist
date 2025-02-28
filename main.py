@@ -10,7 +10,7 @@ def get_answer(user_query, app_logger: logger):
     app_logger.info("before get_query_category")
 
     # Retrival of relevant data from the database
-    profile_category = retrival.get_query_category(user_query, app_logger)
+    profile_category = retrival.get_query_category(user_query)
 
     app_logger.info(f"profile category : {profile_category}")
 

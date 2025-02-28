@@ -3,8 +3,6 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import GoogleGenerativeAI
 from langchain_core.output_parsers import StrOutputParser
-import streamlit
-from streamlit import logger
 
 __import__('pysqlite3')
 import sys
@@ -14,12 +12,8 @@ from chromadb import PersistentClient
 from langchain_chroma import Chroma
 
 
-def get_query_category(user_query: str, app_logger: logger):
-    app_logger.info("In get_query_category() function")
-
+def get_query_category(user_query: str):
     load_dotenv()
-
-    app_logger.info("After loading env variables")
 
     # Convert the query to a category
     system_prompt = """
@@ -56,23 +50,13 @@ def get_query_category(user_query: str, app_logger: logger):
         AI: None 
     """
 
-    app_logger.info("Before creating prompt")
-
     prompt = ChatPromptTemplate.from_template(system_prompt)
-
-    app_logger.info("Before defining llm")
 
     llm_gemini = GoogleGenerativeAI(model="gemini-1.5-flash-8b")
 
-    app_logger.info("Before defining the chain")
-
     chain = prompt | llm_gemini | StrOutputParser()
 
-    app_logger.info("Before invoking the chain")
-
     response = chain.invoke({"user_query": user_query})
-
-    app_logger.info("after invoking the chain")
 
     # print("\n\nUser query : ", user_query)
     # print(f"Category is : {response}")
