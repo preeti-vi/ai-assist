@@ -22,7 +22,7 @@ if btn:
     placeholder = st.empty()
     placeholder.write("I am getting the answer...")
 
-    response = main.get_answer(user_query)
+    response = main.get_answer(user_query, app_logger)
 
     placeholder.empty()
     st.write(response)
